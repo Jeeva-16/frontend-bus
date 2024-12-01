@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Booking Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/search}">Search The Route</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/results}">search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br /><br />
+<div class="container">
+         <h1 class="text-center mb-4">Find Your Route</h1>
+       
+        <form th:action="@{/search}" method="get" class="row g-3">
+         
+            <div class="col-md-6">
+                <label for="starting" class="form-label">Starting Location</label>
+                <select id="starting" name="starting" class="form-select" required>
+                    <option value="" disabled selected>Select starting location</option>
+                    <option th:each="location : ${dropdownOptions}" th:value="${location}" th:text="${location}"></option>
+                </select>
+            </div>
+
+           
+            <div class="col-md-6">
+                <label for="destination" class="form-label">Destination</label>
+                <select id="destination" name="destination" class="form-select" required>
+                    <option value="" disabled selected>Select destination</option>
+                    <option th:each="location : ${dropdownOption}" th:value="${location}" th:text="${location}"></option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+      </div>
+</body>
+</html>
+
+
+
